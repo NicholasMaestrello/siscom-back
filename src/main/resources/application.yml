@@ -3,7 +3,16 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/siscom?verifyServerCertificate=false&useSSL=true
+    url: jdbc:jtds:sqlserver://localhost;databaseName=Eng_Soft_3
     username: root
-    password:
-    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    driverClassName: net.sourceforge.jtds.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+    hibernate:
+      ddl-auto: update
+#      dialect: org.hibernate.dialect.SQLServer2012Dialect
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

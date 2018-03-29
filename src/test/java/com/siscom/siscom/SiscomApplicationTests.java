@@ -1,4 +1,4 @@
-package com.siscom.appSiscom;
+package com.siscom.siscom;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AppSiscomApplicationTests {
+public class SiscomApplicationTests {
 
 	@Test
 	public void contextLoads() {
