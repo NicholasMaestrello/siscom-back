@@ -1,16 +1,14 @@
-package com.siscom.siscom.entity;
+package com.siscom.siscom.model.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "Modalidades")
+@Table(name= "Modalidade")
 public class ModalidadeEntity implements Serializable {
 	private static final long serialVersionUID = -6171365842988014214L;
 
@@ -36,6 +34,5 @@ public class ModalidadeEntity implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	
 }

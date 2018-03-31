@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.siscom.siscom.entity.MatriculaEntity;
-import com.siscom.siscom.repository.MatriculaRepository;
+import com.siscom.siscom.model.dto.MatriculaDTO;
+import com.siscom.siscom.service.MatriculaService;
 
 @RestController
 public class MatriculaController {
 
 	@Autowired
-	private MatriculaRepository mariculaRepository;
+	private MatriculaService matriculaService;
 	
 	@RequestMapping("/api/matricula")
-	public List<MatriculaEntity> getAll() {
-		return mariculaRepository.findAll();
+	public List<MatriculaDTO> getAll() {
+		return matriculaService.listarMatriculas();
 	}
 }

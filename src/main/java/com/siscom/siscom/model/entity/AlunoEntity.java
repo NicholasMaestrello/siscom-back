@@ -1,4 +1,4 @@
-package com.siscom.siscom.entity;
+package com.siscom.siscom.model.entity;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Alunos")
+@Table(name="Aluno")
 public class AlunoEntity implements Serializable {
 
 	private static final long serialVersionUID = -6446725008453812421L;
@@ -44,7 +44,7 @@ public class AlunoEntity implements Serializable {
 	@Column(name="AluDataEnt")
 	private String dataEnt;
 	
-	@Column(name="AluDataVEnc")
+	@Column(name="AluDataVenc")
 	private String dataVenc;
 
 	public int getId() {

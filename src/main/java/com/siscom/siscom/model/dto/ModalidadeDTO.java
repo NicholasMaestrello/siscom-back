@@ -1,4 +1,4 @@
-package com.siscom.siscom.dto;
+package com.siscom.siscom.model.dto;
 
 import java.io.Serializable;
 

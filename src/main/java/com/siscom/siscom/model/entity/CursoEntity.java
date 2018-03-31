@@ -1,4 +1,4 @@
-package com.siscom.siscom.entity;
+package com.siscom.siscom.model.entity;
 
 import java.io.Serializable;
 
@@ -74,6 +74,14 @@ public class CursoEntity implements Serializable{
 
 	public void setNivel(String nivel) {
 		this.nivel = nivel;
+	}
+
+	public ModalidadeEntity getModalidade() {
+		return modalidade;
+	}
+
+	public void setModalidade(ModalidadeEntity modalidade) {
+		this.modalidade = modalidade;
 	}
 	
 	

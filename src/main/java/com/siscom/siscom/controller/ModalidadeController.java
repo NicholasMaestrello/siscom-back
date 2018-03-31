@@ -6,18 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.siscom.siscom.entity.ModalidadeEntity;
-import com.siscom.siscom.repository.ModalidadeRepository;
+import com.siscom.siscom.model.dto.ModalidadeDTO;
+import com.siscom.siscom.service.ModalidadeService;
 
 @RestController
 public class ModalidadeController {
 	
 	@Autowired
-	ModalidadeRepository m;
+	ModalidadeService modalidadeService;
 	
 	@RequestMapping("/api/modalidades")
-	public List<ModalidadeEntity> getfirst() {
-		return m.findAll();
+	public List<ModalidadeDTO> getfirst() {
+		return modalidadeService.listarModalidades();
 	}
 
 }
