@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class AlunoDTO implements Serializable {
 
 	private static final long serialVersionUID = -8116755459407071984L;
@@ -24,8 +26,10 @@ public class AlunoDTO implements Serializable {
 
 	private String paga;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dataEnt;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dataVenc;
 	
 	private List<CursoDTO> cursos;

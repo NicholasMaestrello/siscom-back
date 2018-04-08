@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -65,6 +66,7 @@ public class AlunoAdapter {
 	        cal.set(Calendar.SECOND, 0);
 	        cal.set(Calendar.MILLISECOND, 0);
 	        cal.add(Calendar.DATE, 1);
+	        
 			alu.setDataEnt(formatter.format(cal.getTime()));
 			}
 		if(a.getDataVenc() != null) {
@@ -74,7 +76,8 @@ public class AlunoAdapter {
 	        cal.set(Calendar.SECOND, 0);
 	        cal.set(Calendar.MILLISECOND, 0);
 	        cal.add(Calendar.DATE, 1);
-			alu.setDataVenc(formatter.format(cal.getTime()));
+	        System.out.println(formatter.format(new Date(a.getDataVenc().getTime())));
+			alu.setDataVenc(formatter.format(new Date(a.getDataVenc().getTime())));
 		}
 		alu.setEndereco(a.getEndereco());
 		alu.setNome(a.getNome());
