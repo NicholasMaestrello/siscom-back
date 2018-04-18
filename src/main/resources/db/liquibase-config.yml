@@ -1,0 +1,5 @@
+url: jdbc:jtds:sqlserver://localhost/PORTALCUSTODIA;instance=SQL2012
+username: sa
+password: sa
+driverClassName: net.sourceforge.jtds.jdbc.Driver
+outputChangeLogFile: src/main/resources/db/changelog/db.changelog-1.1.0.yml

@@ -2,17 +2,34 @@ server:
   port: 8020
 
 spring:
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  application:
+    name: siscom-back
   datasource:
-    url: jdbc:jtds:sqlserver://localhost;databaseName=Eng_Soft_3
-    username: root
-    password: root
-    driverClassName: net.sourceforge.jtds.jdbc.Driver
+    url: jdbc:h2:mem:mydb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa      
+    password: null
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.SQLServer2012Dialect
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update
-#      dialect: org.hibernate.dialect.SQLServer2012Dialect
+      ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  h2:
+    console:
+      enabled: true
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.SQLServer2012Dialect
+#    hibernate:
+#      ddl-auto: update
+##      dialect: org.hibernate.dialect.SQLServer2012Dialect
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+liquibase:
+  change-log: classpath:/db/db.changelog-master.yml
+  
