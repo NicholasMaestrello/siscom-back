@@ -1,377 +1,138 @@
 # CRIACAO DE TABELAS
 databaseChangeLog:
 
-#tabela Permissao
+#tabela Aluno
   - changeSet:
       id: 1
-      author: SeniorSolution
+      author: Nicholas
       changes: 
         - createTable:
-            tableName: Permissao
+            tableName: Aluno
             columns:
               - column:
-                  name: Id
-                  type: bigint
+                  name: AluId
+                  type: int
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: Nome
-                  type: varchar(255)
-                  constraints:
-                    nullable: false
+                  name: AluNome
+                  type: varchar(50)
               - column:
-                  name: IdPermissaoPai
-                  type: bigint
-        - addForeignKeyConstraint:
-            baseTableName: Permissao
-            baseColumnNames: IdPermissaoPai
-            constraintName: Fk_Permissao_IdPermissaoPai_X_Permissao_Id
-            referencedTableName: Permissao
-            referencedColumnNames: Id
+                  name: AluEnd
+                  type: varchar(50)
+              - column:
+                  name: AluCPF
+                  type: varchar(11)
+              - column:
+                  name: AluBairro
+                  type: varchar(50)
+              - column:
+                  name: AluCel
+                  type: varchar(11)
+              - column:
+                  name: AluTel
+                  type: varchar(10)
+              - column:
+                  name: AluPaga
+                  type: varchar(30)
+              - column:
+                  name: AluDataEnt
+                  type: varchar(10)
+              - column:
+                  name: AluDataVenc
+                  type: varchar(10)
 
-#tabela PermissaoProcesso
+#tabela Modalidade
   - changeSet:
         id: 2
-        author: SeniorSolution
+        author: Nicholas
         changes: 
           - createTable:
-              tableName: PermissaoProcesso
+              tableName: Modalidade
               columns:
                 - column:
-                    name: IdPermissao
-                    type: bigint
+                    name: ModId
+                    type: int
+                    autoIncrement: true
                     constraints:
+                      primaryKey: true
                       nullable: false
                 - column:
-                    name: IdProcesso
-                    type: bigint
-                    constraints:
-                      nullable: false                  
-          - addPrimaryKey:
-              columnNames:  IdPermissao, IdProcesso
-              constraintName: PK_PermissaoProcesso
-              tableName: PermissaoProcesso
-          - addForeignKeyConstraint:
-              baseTableName: PermissaoProcesso
-              baseColumnNames: IdPermissao
-              constraintName: FK_PermissaoProcesso_IdPermissao
-              referencedTableName: Permissao
-              referencedColumnNames: Id
+                    name: ModNome
+                    type: varchar(30)
 
-            
-#tabela Componente
+#tabela Curso
   - changeSet:
         id: 3
-        author: SeniorSolution
+        author: Nicholas
         changes: 
           - createTable:
-              tableName: Componente
+              tableName: Curso
               columns:
                 - column:
-                    name: Id
+                    name: CurId
                     type: int
+                    autoIncrement: true
                     constraints:
                       primaryKey: true
                       nullable: false
                 - column:
-                    name: Nome
-                    type: varchar(255)
-                    constraints:
-                      nullable: false
-                - column:
-                    name: Descricao
-                    type: varchar(255)
-                - column:
-                    name: Componente
-                    type: varchar(255)
-                    constraints:
-                      nullable: false
-                - column:
-                    name: IdPermissao
-                    type: bigint
-                    constraints:
-                      nullable: false
-                - column:
-                    name: Altura
+                    name: ModId
                     type: int
                     constraints:
                       nullable: false
                 - column:
-                    name: Largura
-                    type: int
-                    constraints:
-                      nullable: false
+                    name: CurResp
+                    type: varchar(50)
                 - column:
-                    name: Widget
-                    type: boolean
-                    constraints:
-                      nullable: false
+                    name: CurQtdeAlu
+                    type: int
+                - column:
+                    name: CurNivel
+                    type: varchar(30)
           - addForeignKeyConstraint:
-              baseTableName: Componente
-              baseColumnNames: IdPermissao
-              constraintName: Fk_Componente_IdPermissao_X_Permissao_Id
-              referencedTableName: Permissao
-              referencedColumnNames: Id
+              baseTableName: Curso
+              baseColumnNames: ModId
+              constraintName: Fk_Curso_X_Modalidade
+              referencedTableName: Modalidade
+              referencedColumnNames: ModId
               
-#tabela Dashboard
+#tabela Matricula
   - changeSet:
         id: 4
-        author: SeniorSolution
+        author: Nicholas
         changes: 
           - createTable:
-              tableName: Dashboard
+              tableName: Matricula
               columns:
                 - column:
-                    name: Id
-                    type: bigint
+                    name: MatId
+                    type: int
                     autoIncrement: true
                     constraints:
                       primaryKey: true
                       nullable: false
                 - column:
-                    name: Nome
-                    type: varchar(255)
-                    constraints:
-                      nullable: false
-                - column:
-                    name: IdUsuario
-                    type: bigint
-                    constraints:
-                      nullable: false
-          - addUniqueConstraint:
-              columnNames: Nome, IdUsuario
-              constraintName: Uk_Nome_IdUsuario
-              tableName: Dashboard
-               
-                    
-#tabela DashboardWidget
-  - changeSet:
-        id: 5
-        author: SeniorSolution
-        changes: 
-          - createTable:
-              tableName: DashboardWidget
-              columns:
-                - column:
-                    name: Id
-                    type: bigint
-                    autoIncrement: true
-                    constraints:
-                      primaryKey: true
-                      nullable: false
-                - column:
-                    name: IdDashboard
-                    type: bigint
-                    constraints:
-                      nullable: false
-                - column:
-                    name: IdWidget
+                    name: AluId
                     type: int
                     constraints:
                       nullable: false
                 - column:
-                    name: Linha
+                    name: CurId
                     type: int
                     constraints:
                       nullable: false
-                - column:
-                    name: Coluna
-                    type: int
-                    constraints:
-                      nullable: false
-                - column:
-                    name: Altura
-                    type: int
-                    constraints:
-                      nullable: false
-                - column:
-                    name: Largura
-                    type: int
-                    constraints:
-                      nullable: false
-                - column:
-                    name: Configuracao
-                    type: text
           - addForeignKeyConstraint:
-              baseTableName: DashboardWidget
-              baseColumnNames: IdDashboard
-              constraintName: Fk_DashboardWidget_IdDashboard_X_Dashboard_Id
-              referencedTableName: Dashboard
-              referencedColumnNames: Id
+              baseTableName: Matricula
+              baseColumnNames: AluId
+              constraintName: Fk_Matricula_X_Aluno
+              referencedTableName: Aluno
+              referencedColumnNames: AluId
           - addForeignKeyConstraint:
-              baseTableName: DashboardWidget
-              baseColumnNames: IdWidget
-              constraintName: Fk_DashboardWidget_IdWidget_X_Componente_Id
-              referencedTableName: Componente
-              referencedColumnNames: Id
-
-#tabela PermissaoUsuario
-  - changeSet:
-        id: 6
-        author: SeniorSolution
-        changes: 
-          - createTable:
-              tableName: PermissaoUsuario
-              columns:
-                - column:
-                    name: IdUsuario
-                    type: bigint
-                    constraints:
-                      nullable: false
-                - column:
-                    name: IdPermissao
-                    type: bigint
-                    constraints:
-                      nullable: false
-          - addPrimaryKey:
-              columnNames:  IdUsuario, IdPermissao
-              constraintName: PK_PermissaoUsuario
-              tableName: PermissaoUsuario
-          - addForeignKeyConstraint:
-              baseTableName: PermissaoUsuario
-              baseColumnNames: IdPermissao
-              constraintName: Fk_Permissao_IdPermissao_Permissao_Id
-              referencedTableName: Permissao
-              referencedColumnNames: Id
-
-#Tabela TipoRelatorio
-  - changeSet:
-        id: 7
-        author: SeniorSolution
-        changes: 
-          - createTable:
-              tableName: TipoRelatorio
-              columns:
-                - column:
-                    name: Id
-                    type: bigint
-                    autoIncrement: true
-                    constraints:
-                      primaryKey: true
-                      nullable: false
-                - column:
-                    name: Nome
-                    type: varchar(255)
-                    constraints:
-                      nullable: false
-                - column:
-                    name: IdProcesso
-                    type: bigint
-                    constraints:
-                      nullable: false
-
-#tabela Relatorio
-  - changeSet:
-        id: 8
-        author: SeniorSolution
-        changes: 
-          - createTable:
-              tableName: Relatorio
-              columns:
-                - column:
-                    name: Id
-                    type: bigint
-                    autoIncrement: true
-                    constraints:
-                      nullable: false
-                      primaryKey: true
-                - column:
-                    name: IdCarteira
-                    type: bigint
-                    constraints:
-                      nullable: false
-                - column:
-                    name: IdTipoRelatorio
-                    type: bigint
-                    constraints:
-                      nullable: false
-                - column:
-                    name: IdSolicitacao
-                    type: varchar(255)
-                    constraints:
-                      nullable: false
-                - column:
-                    name: Data
-                    type: date
-                    constraints:
-                      nullable: false
-                - column:
-                    name: IdUsuario
-                    type: bigint
-                    constraints:
-                      nullable: false
-                - column:
-                    name: DataSolicitacao
-                    type: timestamp
-                    constraints:
-                      nullable: false
-                - column:
-                    name: Status
-                    type: int
-                    constraints:
-                      nullable: false
-                - column:
-                    name: Arquivo
-                    type: longvarbinary
-                    constraints:
-                      nullable: true
-          - addForeignKeyConstraint:
-              baseTableName: Relatorio
-              baseColumnNames: IdTipoRelatorio
-              constraintName: Fk_Relatorio_X_TipoRelatorio_Id
-              referencedTableName: TipoRelatorio
-              referencedColumnNames: Id
-              
-#Tabela Menu
-  - changeSet:
-        id: 9
-        author: SeniorSolution
-        changes: 
-          - createTable:
-              tableName: Menu
-              columns:
-                - column:
-                    name: Id
-                    type: int
-                    constraints:
-                      primaryKey: true
-                      nullable: false
-                - column:
-                    name: Nome
-                    type: varchar(255)
-                    constraints:
-                      nullable: false
-                - column:
-                    name: URI
-                    type: varchar(255)
-                - column:
-                    name: IdComponente
-                    type: bigint
-                - column:
-                    name: IdPermissao
-                    type: bigint
-                - column:
-                    name: IdMenuPai
-                    type: bigint
-                - column:
-                    name: Icone
-                    type: varchar(255)
-          - addForeignKeyConstraint:
-              baseTableName: Menu
-              baseColumnNames: IdPermissao
-              constraintName: Fk_Menu_IdPermissao_X_Permissao_Id
-              referencedTableName: Permissao
-              referencedColumnNames: Id
-          - addForeignKeyConstraint:
-              baseTableName: Menu
-              baseColumnNames: IdComponente
-              constraintName: Fk_Menu_IdComponente_X_Componente_Id
-              referencedTableName: Componente
-              referencedColumnNames: Id
-          - addForeignKeyConstraint:
-              baseTableName: Menu
-              baseColumnNames: IdMenuPai
-              constraintName: Fk_Menu_IdMenuPai_X_Menu_Id
-              referencedTableName: Menu
-              referencedColumnNames: Id
+              baseTableName: Matricula
+              baseColumnNames: CurId
+              constraintName: Fk_Matricula_X_Curso
+              referencedTableName: Curso
+              referencedColumnNames: CurId

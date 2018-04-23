@@ -23,7 +23,7 @@ public class AlunoEntity implements Serializable {
 	@Column(name="AluNome")
 	private String nome;
 	
-	@Column(name="AlunEnd")
+	@Column(name="AluEnd")
 	private String endereco;
 	
 	@Column(name="AluCPF")
