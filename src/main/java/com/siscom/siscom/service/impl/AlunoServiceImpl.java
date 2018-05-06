@@ -34,7 +34,8 @@ public class AlunoServiceImpl implements AlunoService {
 		if(aluno == null)
 			return "Erro";
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
-		saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
+		if(aluno.getCursos() != null)
+			saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
 		return "Sucesso";
 	}
 	
@@ -44,7 +45,8 @@ public class AlunoServiceImpl implements AlunoService {
 			return "Erro";
 		matriculaService.deletarPorAluno(aluno);
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
-		saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
+		if(aluno.getCursos() != null)
+			saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
 		return "Sucesso";
 	}
 	

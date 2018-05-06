@@ -29,7 +29,7 @@ public class AutenticationFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpServletRequest request = (HttpServletRequest) req;
 	    response.setHeader(X_CLACKS_OVERHEAD, "GNU Terry Pratchett");
-	    System.out.println(request.getHeader("token"));
+	    //System.out.println(request.getHeader("token"));
 	    chain.doFilter(req, res);
 		
 	}

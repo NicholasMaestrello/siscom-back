@@ -76,7 +76,6 @@ public class AlunoAdapter {
 	        cal.set(Calendar.SECOND, 0);
 	        cal.set(Calendar.MILLISECOND, 0);
 	        cal.add(Calendar.DATE, 1);
-	        System.out.println(formatter.format(new Date(a.getDataVenc().getTime())));
 			alu.setDataVenc(formatter.format(new Date(a.getDataVenc().getTime())));
 		}
 		alu.setEndereco(a.getEndereco());
