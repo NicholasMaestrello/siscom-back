@@ -133,4 +133,14 @@ public class AlunoEntity implements Serializable {
 	public void setDataVenc(String dataVenc) {
 		this.dataVenc = dataVenc;
 	}
+
+	public List<MatriculaEntity> getMatriculas() {
+		return matriculas;
+	}
+
+	public void setMatriculas(List<MatriculaEntity> matriculas) {
+		this.matriculas = matriculas;
+	}
+	
+	
 }

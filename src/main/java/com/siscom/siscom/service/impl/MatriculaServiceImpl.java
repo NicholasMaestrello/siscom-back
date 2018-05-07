@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.siscom.siscom.model.adapter.AlunoAdapter;
 import com.siscom.siscom.model.adapter.MatriculaAdapter;
 import com.siscom.siscom.model.dto.AlunoDTO;
 import com.siscom.siscom.model.dto.MatriculaDTO;
-import com.siscom.siscom.model.entity.AlunoEntity;
 import com.siscom.siscom.model.entity.MatriculaEntity;
 import com.siscom.siscom.repository.MatriculaRepository;
 import com.siscom.siscom.service.MatriculaService;
@@ -30,10 +28,10 @@ public class MatriculaServiceImpl implements MatriculaService {
 		matriculaRepo.save(mat);
 	}
 
+	
 	@Override
 	public void deletarPorAluno(AlunoDTO aluno) {
-		AlunoEntity a = AlunoAdapter.adaptToEntity(aluno);
-		matriculaRepo.deleteByAluno(a);
+		matriculaRepo.deleteByAlunoId(aluno.getId());
 	}
 
 	

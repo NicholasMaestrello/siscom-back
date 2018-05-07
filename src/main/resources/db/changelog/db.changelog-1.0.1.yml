@@ -63,6 +63,17 @@ databaseChangeLog:
                   type: varchar(30)
                   value: Jazz
             tableName: Modalidade
+        - insert:
+            columns:
+              - column:
+                  name: ModId
+                  type: int
+                  value: 2
+              - column:
+                  name: ModNome
+                  type: varchar(30)
+                  value: Ballet
+            tableName: Modalidade
             
 #popular Curso
   - changeSet:
@@ -79,6 +90,29 @@ databaseChangeLog:
                   name: ModId
                   type: int
                   value: 1
+              - column:
+                  name: CurResp
+                  type: varchar(50)
+                  value: Mike Melanino
+              - column:
+                  name: CurQtdeAlu
+                  type: int
+                  value: 20
+              - column:
+                  name: CurNivel
+                  type: varchar(30)
+                  value: Intermediario
+            tableName: Curso
+        - insert:
+            columns:
+              - column:
+                  name: CurId
+                  type: int
+                  value: 2
+              - column:
+                  name: ModId
+                  type: int
+                  value: 2
               - column:
                   name: CurResp
                   type: varchar(50)

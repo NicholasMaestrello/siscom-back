@@ -3,6 +3,8 @@ package com.siscom.siscom.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,7 @@ public class AlunoServiceImpl implements AlunoService {
 	}
 	
 	@Override
+	@Transactional
 	public String alterarAluno(AlunoDTO aluno) {
 		if(aluno == null)
 			return "Erro";
