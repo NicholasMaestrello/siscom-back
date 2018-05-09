@@ -29,7 +29,7 @@ public class AlunoAdapter {
 		alu.setBairro(a.getBairro());
 		alu.setCel(a.getCel());
 		alu.setCpf(a.getCpf());
-		if(a.getDataEnt() != null)
+		/*if(a.getDataEnt() != null)
 			try {
 				alu.setDataEnt(formatter.parse(a.getDataEnt()));
 			} catch (ParseException e) {
@@ -42,7 +42,9 @@ public class AlunoAdapter {
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
+		alu.setDataEnt(a.getDataEnt());
+		alu.setDataVenc(a.getDataVenc());
 		alu.setEndereco(a.getEndereco());
 		alu.setNome(a.getNome());
 		alu.setPaga(a.getPaga());
@@ -65,7 +67,7 @@ public class AlunoAdapter {
 		alu.setBairro(a.getBairro());
 		alu.setCel(a.getCel());
 		alu.setCpf(a.getCpf());
-		if(a.getDataEnt() != null) {
+		/*if(a.getDataEnt() != null) {
 			cal.setTime(a.getDataEnt());
 			cal.set(Calendar.HOUR_OF_DAY, 0);
 	        cal.set(Calendar.MINUTE, 0);
@@ -83,7 +85,9 @@ public class AlunoAdapter {
 	        cal.set(Calendar.MILLISECOND, 0);
 	        cal.add(Calendar.DATE, 1);
 			alu.setDataVenc(formatter.format(new Date(a.getDataVenc().getTime())));
-		}
+		}*/
+		alu.setDataEnt(a.getDataEnt());
+		alu.setDataVenc(a.getDataVenc());
 		alu.setEndereco(a.getEndereco());
 		alu.setNome(a.getNome());
 		alu.setPaga(a.getPaga());

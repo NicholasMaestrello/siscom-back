@@ -1,6 +1,7 @@
 package com.siscom.siscom.model.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -46,10 +47,10 @@ public class AlunoEntity implements Serializable {
 	private String paga;
 	
 	@Column(name="AluDataEnt")
-	private String dataEnt;
+	private LocalDate dataEnt;
 	
 	@Column(name="AluDataVenc")
-	private String dataVenc;
+	private LocalDate dataVenc;
 	
 	@OneToMany(mappedBy="aluno", cascade=CascadeType.ALL, targetEntity= MatriculaEntity.class, fetch = FetchType.EAGER)
 	private List<MatriculaEntity> matriculas;
@@ -118,19 +119,19 @@ public class AlunoEntity implements Serializable {
 		this.paga = paga;
 	}
 
-	public String getDataEnt() {
+	public LocalDate getDataEnt() {
 		return dataEnt;
 	}
 
-	public void setDataEnt(String dataEnt) {
+	public void setDataEnt(LocalDate dataEnt) {
 		this.dataEnt = dataEnt;
 	}
 
-	public String getDataVenc() {
+	public LocalDate getDataVenc() {
 		return dataVenc;
 	}
 
-	public void setDataVenc(String dataVenc) {
+	public void setDataVenc(LocalDate dataVenc) {
 		this.dataVenc = dataVenc;
 	}
 

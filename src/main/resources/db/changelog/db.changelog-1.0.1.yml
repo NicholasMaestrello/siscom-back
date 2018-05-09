@@ -39,12 +39,12 @@ databaseChangeLog:
                   value: 966662222
               - column:
                   name: AluDataEnt
-                  type: varchar(10)
-                  value: 22/02/2014
+                  type: date
+                  valueDate: 2017-02-15
               - column:
                   name: AluDataVenc
-                  type: varchar(10)
-                  value: 22/02/2015
+                  type: date
+                  valueDate: 2018-02-15
             tableName: Aluno
 
 #popular modalidade

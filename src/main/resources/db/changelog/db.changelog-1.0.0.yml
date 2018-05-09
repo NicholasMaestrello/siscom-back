@@ -39,10 +39,10 @@ databaseChangeLog:
                   type: varchar(30)
               - column:
                   name: AluDataEnt
-                  type: varchar(10)
+                  type: date
               - column:
                   name: AluDataVenc
-                  type: varchar(10)
+                  type: date
 
 #tabela Modalidade
   - changeSet:
