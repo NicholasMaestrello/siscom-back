@@ -30,8 +30,8 @@ public class MatriculaServiceImpl implements MatriculaService {
 
 	
 	@Override
-	public void deletarPorAluno(AlunoDTO aluno) {
-		matriculaRepo.deleteByAlunoId(aluno.getId());
+	public void deletarPorAluno(int id) {
+		matriculaRepo.deleteByAlunoId(id);
 	}
 
 	

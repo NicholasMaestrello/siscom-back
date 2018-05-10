@@ -50,11 +50,20 @@ public class AlunoServiceImpl implements AlunoService {
 		if (aluno == null)
 			return "Erro";
 		fixDateAluno(aluno);
-		matriculaService.deletarPorAluno(aluno);
+		matriculaService.deletarPorAluno(aluno.getId());
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
 		if (aluno.getCursos() != null)
 			saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
 		return "Sucesso";
+	}
+	
+	@Override
+	public String deletarAluno(int id) {
+		if(id <= 0)
+			return "Erro";
+		matriculaService.deletarPorAluno(id);
+		alunoRepository.delete(id);
+		return "sucesso";
 	}
 
 	private void saveMatriuculas(AlunoDTO aluno, List<CursoDTO> cursos) {

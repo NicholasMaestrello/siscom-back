@@ -3,9 +3,11 @@ package com.siscom.siscom.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siscom.siscom.model.dto.AlunoDTO;
@@ -31,5 +33,10 @@ public class AlunoController {
 	@RequestMapping(method = RequestMethod.PUT, path="/api/aluno")
 	public String alterar(@RequestBody AlunoDTO aluno) {
 		return alunoService.alterarAluno(aluno);
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE, path="/api/aluno/{id}")
+	public String deletar(@PathVariable int id) {
+		return alunoService.deletarAluno(id);
 	}
 }

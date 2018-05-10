@@ -9,4 +9,5 @@ public interface AlunoService {
 	List<AlunoDTO> listarAlunos();
 	String inserirAluno(AlunoDTO aluno);
 	String alterarAluno(AlunoDTO aluno);
+	String deletarAluno(int id);
 }
