@@ -37,14 +37,12 @@ databaseChangeLog:
                   name: AluTel
                   type: varchar(11)
                   value: 966662222
-              - column:
-                  name: AluDataEnt
-                  type: date
-                  valueDate: 2017-02-15
-              - column:
-                  name: AluDataVenc
-                  type: date
-                  valueDate: 2018-02-15
+#              - column:
+#                  name: AluDataEnt
+#                  valueDate: 2017-09-18T09:40:47.368Z
+#              - column:
+#                  name: AluDataVenc
+#                  valueDate: 2018-09-18T09:40:47.368Z
             tableName: Aluno
 
 #popular modalidade

@@ -1,7 +1,6 @@
 package com.siscom.siscom.model.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -28,10 +27,10 @@ public class AlunoDTO implements Serializable {
 	private String paga;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private LocalDate dataEnt;
+	private Date dataEnt;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private LocalDate dataVenc;
+	private Date dataVenc;
 	
 	private List<CursoDTO> cursos;
 
@@ -99,19 +98,19 @@ public class AlunoDTO implements Serializable {
 		this.paga = paga;
 	}
 
-	public LocalDate getDataEnt() {
+	public Date getDataEnt() {
 		return dataEnt;
 	}
 
-	public void setDataEnt(LocalDate dataEnt) {
+	public void setDataEnt(Date dataEnt) {
 		this.dataEnt = dataEnt;
 	}
 
-	public LocalDate getDataVenc() {
+	public Date getDataVenc() {
 		return dataVenc;
 	}
 
-	public void setDataVenc(LocalDate dataVenc) {
+	public void setDataVenc(Date dataVenc) {
 		this.dataVenc = dataVenc;
 	}
 

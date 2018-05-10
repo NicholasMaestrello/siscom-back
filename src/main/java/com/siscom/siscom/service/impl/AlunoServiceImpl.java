@@ -1,6 +1,7 @@
 package com.siscom.siscom.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -22,10 +23,10 @@ public class AlunoServiceImpl implements AlunoService {
 
 	@Autowired
 	AlunoRepository alunoRepository;
-	
+
 	@Autowired
 	MatriculaService matriculaService;
-	
+
 	@Override
 	public List<AlunoDTO> listarAlunos() {
 		return AlunoAdapter.adaptToDTO(alunoRepository.findAll());
@@ -33,26 +34,29 @@ public class AlunoServiceImpl implements AlunoService {
 
 	@Override
 	public String inserirAluno(AlunoDTO aluno) {
-		if(aluno == null)
+		if (aluno == null)
 			return "Erro";
+		fixDateAluno(aluno);
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
-		if(aluno.getCursos() != null)
+		if (aluno.getCursos() != null)
 			saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
 		return "Sucesso";
 	}
-	
+
 	@Override
 	@Transactional
 	public String alterarAluno(AlunoDTO aluno) {
-		if(aluno == null)
+
+		if (aluno == null)
 			return "Erro";
+		fixDateAluno(aluno);
 		matriculaService.deletarPorAluno(aluno);
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
-		if(aluno.getCursos() != null)
+		if (aluno.getCursos() != null)
 			saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
 		return "Sucesso";
 	}
-	
+
 	private void saveMatriuculas(AlunoDTO aluno, List<CursoDTO> cursos) {
 		List<MatriculaDTO> matriculas = new ArrayList<>();
 		for (CursoDTO c : cursos) {
@@ -63,5 +67,18 @@ public class AlunoServiceImpl implements AlunoService {
 		}
 		matriculaService.inserirMatriculas(matriculas);
 	}
-	
+
+	private void fixDateAluno(AlunoDTO aluno) {
+		Calendar cal = Calendar.getInstance();
+		if (aluno.getDataEnt() != null) {
+			cal.setTime(aluno.getDataEnt());
+			cal.add(Calendar.HOUR_OF_DAY, 3);
+			aluno.setDataEnt(cal.getTime());
+		}
+		if (aluno.getDataVenc() != null) {
+			cal.setTime(aluno.getDataVenc());
+			cal.add(Calendar.HOUR_OF_DAY, 3);
+			aluno.setDataVenc(cal.getTime());
+		}
+	}
 }
