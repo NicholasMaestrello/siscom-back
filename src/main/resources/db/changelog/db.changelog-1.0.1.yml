@@ -147,3 +147,20 @@ databaseChangeLog:
                   type: int
                   value: 1
             tableName: Matricula
+            
+#popular Login
+  - changeSet:
+      id: 81901
+      author: Nicholas
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: Login
+                  type: varchar(30)
+                  value: teste
+              - column:
+                  name: Password
+                  type: varchar(30)
+                  value: teste
+            tableName: Login

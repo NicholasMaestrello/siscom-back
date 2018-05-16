@@ -28,6 +28,7 @@ public class AutenticationFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpServletRequest request = (HttpServletRequest) req;
+		String jsonRequestToken = request.getHeader("token");
 	    response.setHeader(X_CLACKS_OVERHEAD, "GNU Terry Pratchett");
 	    //System.out.println(request.getHeader("token"));
 	    chain.doFilter(req, res);

@@ -136,3 +136,21 @@ databaseChangeLog:
               constraintName: Fk_Matricula_X_Curso
               referencedTableName: Curso
               referencedColumnNames: CurId
+
+#tabela Login
+  - changeSet:
+        id: 5
+        author: Nicholas
+        changes: 
+          - createTable:
+              tableName: Login
+              columns:
+                - column:
+                    name: Login
+                    type: varchar(30)
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: Password
+                    type: varchar(30)
