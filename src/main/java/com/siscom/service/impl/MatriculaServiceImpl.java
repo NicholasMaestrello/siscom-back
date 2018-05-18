@@ -1,16 +1,16 @@
-package com.siscom.siscom.service.impl;
+package com.siscom.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.siscom.siscom.model.adapter.MatriculaAdapter;
-import com.siscom.siscom.model.dto.AlunoDTO;
-import com.siscom.siscom.model.dto.MatriculaDTO;
-import com.siscom.siscom.model.entity.MatriculaEntity;
-import com.siscom.siscom.repository.MatriculaRepository;
-import com.siscom.siscom.service.MatriculaService;
+import com.siscom.model.adapter.MatriculaAdapter;
+import com.siscom.model.dto.AlunoDTO;
+import com.siscom.model.dto.MatriculaDTO;
+import com.siscom.model.entity.MatriculaEntity;
+import com.siscom.repository.MatriculaRepository;
+import com.siscom.service.MatriculaService;
 
 @Service
 public class MatriculaServiceImpl implements MatriculaService {

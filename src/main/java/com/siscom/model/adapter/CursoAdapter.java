@@ -1,10 +1,10 @@
-package com.siscom.siscom.model.adapter;
+package com.siscom.model.adapter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.siscom.siscom.model.dto.CursoDTO;
-import com.siscom.siscom.model.entity.CursoEntity;
+import com.siscom.model.dto.CursoDTO;
+import com.siscom.model.entity.CursoEntity;
 
 public class CursoAdapter {
 

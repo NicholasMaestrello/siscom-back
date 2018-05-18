@@ -1,13 +1,14 @@
-package com.siscom.siscom.service;
+package com.siscom.service;
 
 import java.util.List;
 
-import com.siscom.siscom.model.dto.AlunoDTO;
+import com.siscom.model.dto.AlunoDTO;
+import com.siscom.model.dto.DefaultResponseDTO;
 
 public interface AlunoService {
 
 	List<AlunoDTO> listarAlunos();
-	String inserirAluno(AlunoDTO aluno);
+	DefaultResponseDTO<AlunoDTO> inserirAluno(AlunoDTO aluno);
 	String alterarAluno(AlunoDTO aluno);
 	String deletarAluno(int id);
 }

@@ -1,10 +1,10 @@
-package com.siscom.siscom.model.adapter;
+package com.siscom.model.adapter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.siscom.siscom.model.dto.ModalidadeDTO;
-import com.siscom.siscom.model.entity.ModalidadeEntity;
+import com.siscom.model.dto.ModalidadeDTO;
+import com.siscom.model.entity.ModalidadeEntity;
 
 public class ModalidadeAdapter {
 	

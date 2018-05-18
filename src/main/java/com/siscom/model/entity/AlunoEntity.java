@@ -1,4 +1,4 @@
-package com.siscom.siscom.model.entity;
+package com.siscom.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;

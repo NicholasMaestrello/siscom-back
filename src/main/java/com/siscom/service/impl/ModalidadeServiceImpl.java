@@ -1,14 +1,14 @@
-package com.siscom.siscom.service.impl;
+package com.siscom.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.siscom.siscom.model.adapter.ModalidadeAdapter;
-import com.siscom.siscom.model.dto.ModalidadeDTO;
-import com.siscom.siscom.repository.ModalidadeRepository;
-import com.siscom.siscom.service.ModalidadeService;
+import com.siscom.model.adapter.ModalidadeAdapter;
+import com.siscom.model.dto.ModalidadeDTO;
+import com.siscom.repository.ModalidadeRepository;
+import com.siscom.service.ModalidadeService;
 
 @Service
 public class ModalidadeServiceImpl implements ModalidadeService{

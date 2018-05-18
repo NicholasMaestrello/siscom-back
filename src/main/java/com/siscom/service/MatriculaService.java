@@ -1,8 +1,8 @@
-package com.siscom.siscom.service;
+package com.siscom.service;
 
 import java.util.List;
 
-import com.siscom.siscom.model.dto.MatriculaDTO;
+import com.siscom.model.dto.MatriculaDTO;
 
 public interface MatriculaService {
 

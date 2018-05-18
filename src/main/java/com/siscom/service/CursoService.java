@@ -1,8 +1,8 @@
-package com.siscom.siscom.service;
+package com.siscom.service;
 
 import java.util.List;
 
-import com.siscom.siscom.model.dto.CursoDTO;
+import com.siscom.model.dto.CursoDTO;
 
 public interface CursoService {
 

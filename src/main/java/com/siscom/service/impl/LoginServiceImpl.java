@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.siscom.auth.JWTUtil;
+import com.siscom.model.dto.DefaultResponseDTO;
 import com.siscom.model.dto.LoginDTO;
 import com.siscom.model.entity.LoginEntity;
 import com.siscom.repository.LoginRepository;
@@ -16,11 +17,15 @@ public class LoginServiceImpl implements LoginService {
 	private LoginRepository loginRepository;
 
 	@Override
-	public String login(LoginDTO login) {
+	public DefaultResponseDTO<String> login(LoginDTO login) {
+		DefaultResponseDTO<String> resposta = new DefaultResponseDTO<>();
 		LoginEntity l = loginRepository.findByIdAndPassword(login.getId(), login.getPassword());
-		if(l != null)
-			return JWTUtil.create(login);
-		return null;
+		if(l != null) {
+			resposta.setStatus("sucesso");
+			resposta.setResposta(JWTUtil.create(login));
+		}else
+			resposta.setStatus("erro");
+		return resposta;
 	}
 
 }

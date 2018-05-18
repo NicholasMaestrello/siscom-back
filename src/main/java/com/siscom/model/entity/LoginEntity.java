@@ -1,4 +1,4 @@
-package com.siscom.siscom.model.entity;
+package com.siscom.model.entity;
 
 import java.io.Serializable;
 
@@ -19,7 +19,7 @@ public class LoginEntity implements Serializable {
 	private String id;
 	
 	@Column(name="Password")
-	private String nome;
+	private String password;
 
 	public String getId() {
 		return id;
@@ -29,12 +29,12 @@ public class LoginEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

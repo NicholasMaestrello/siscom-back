@@ -1,4 +1,4 @@
-package com.siscom.siscom.controller;
+package com.siscom.controller;
 
 import java.io.IOException;
 
@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
 
+import com.siscom.auth.JWTUtil;
+
 @Component
 public class AutenticationFilter implements Filter {
 	public static final String X_CLACKS_OVERHEAD = "X-Clacks-Overhead";
@@ -20,25 +22,55 @@ public class AutenticationFilter implements Filter {
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
-		HttpServletResponse response = (HttpServletResponse) res;
 		HttpServletRequest request = (HttpServletRequest) req;
-		String jsonRequestToken = request.getHeader("token");
-	    response.setHeader(X_CLACKS_OVERHEAD, "GNU Terry Pratchett");
-	    //System.out.println(request.getHeader("token"));
-	    chain.doFilter(req, res);
-		
+		HttpServletResponse response = (HttpServletResponse) res;
+
+		String requestURI = request.getRequestURI();
+
+		if (requestURI.startsWith("/api/")) {
+			if (!logado(request)) {
+				throwUnauthorized(response);
+//				response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+				return;
+			} else
+				chain.doFilter(req, res);
+		} else {
+			chain.doFilter(req, res);
+		}
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
+
+	private boolean logado(HttpServletRequest request) {
+		try {
+			String jsonRequestToken = request.getHeader("token");
+			Object user = JWTUtil.decode(jsonRequestToken).getBody().get("user");
+			if (user != null)
+				return true;
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	private void throwUnauthorized(ServletResponse res) throws IOException {
+
+        HttpServletResponse response = (HttpServletResponse) res;
+
+        response.reset();
+        response.setHeader("Content-Type", "application/json;charset=UTF-8");
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.siscom.siscom.service.impl;
+package com.siscom.service.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,14 +9,15 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.siscom.siscom.model.adapter.AlunoAdapter;
-import com.siscom.siscom.model.dto.AlunoDTO;
-import com.siscom.siscom.model.dto.CursoDTO;
-import com.siscom.siscom.model.dto.MatriculaDTO;
-import com.siscom.siscom.model.entity.AlunoEntity;
-import com.siscom.siscom.repository.AlunoRepository;
-import com.siscom.siscom.service.AlunoService;
-import com.siscom.siscom.service.MatriculaService;
+import com.siscom.model.adapter.AlunoAdapter;
+import com.siscom.model.dto.AlunoDTO;
+import com.siscom.model.dto.CursoDTO;
+import com.siscom.model.dto.DefaultResponseDTO;
+import com.siscom.model.dto.MatriculaDTO;
+import com.siscom.model.entity.AlunoEntity;
+import com.siscom.repository.AlunoRepository;
+import com.siscom.service.AlunoService;
+import com.siscom.service.MatriculaService;
 
 @Service
 public class AlunoServiceImpl implements AlunoService {
@@ -33,14 +34,19 @@ public class AlunoServiceImpl implements AlunoService {
 	}
 
 	@Override
-	public String inserirAluno(AlunoDTO aluno) {
-		if (aluno == null)
-			return "Erro";
+	public DefaultResponseDTO<AlunoDTO> inserirAluno(AlunoDTO aluno) {
+		DefaultResponseDTO<AlunoDTO> resposta = new DefaultResponseDTO<>();
+		if (aluno == null) {
+			resposta.setStatus("erro");
+			return resposta;
+		}
 		fixDateAluno(aluno);
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
 		if (aluno.getCursos() != null)
 			saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
-		return "Sucesso";
+		resposta.setStatus("Sucesso");
+		resposta.setResposta(AlunoAdapter.adaptToDTO(a));
+		return resposta;
 	}
 
 	@Override
