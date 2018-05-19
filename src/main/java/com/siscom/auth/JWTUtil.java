@@ -1,6 +1,7 @@
 package com.siscom.auth;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import com.siscom.model.dto.LoginDTO;
 
@@ -20,12 +21,20 @@ public class JWTUtil {
 				.setSubject("tokenUser")
 				.claim("user", login.getId())
 				.claim("dataLogin", LocalDate.now())
+				.setExpiration(setDateExpiration())
 				.signWith(SignatureAlgorithm.HS256, key)
 				.compact();
 	}
 
 	public static Jws<Claims> decode(String token) {
-		return Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+		return Jwts.parser().setSigningKey(key)
+				.parseClaimsJws(token);
 	}
 
+	
+	private static Date setDateExpiration() {
+		Date dtInicial = new Date();
+		dtInicial.setTime(dtInicial.getTime() + 1800000);
+		return dtInicial;
+	}
 }
