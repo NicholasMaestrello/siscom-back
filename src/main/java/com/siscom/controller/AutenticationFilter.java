@@ -1,7 +1,6 @@
 package com.siscom.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,11 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
-
-import com.siscom.auth.JWTUtil;
-
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 
 @Component
 public class AutenticationFilter implements Filter {
@@ -57,6 +51,15 @@ public class AutenticationFilter implements Filter {
 	// TODO mudar para filtrar de verdad quem sabe usando bean
 	private boolean logado(HttpServletRequest request) {
 //		try {
+//			Enumeration<String> names= request.getHeaderNames();
+//			if(names != null){
+//				while(names.hasMoreElements()){
+//					String nomeHeader = names.nextElement();
+//					System.out.println(nomeHeader);
+//					System.out.println("Header " + request.getHeader(nomeHeader));
+//				}
+//			}
+//			
 //			String stringToken = request.getHeader("access-control-request-headers");
 //			System.out.println(stringToken);
 //			Claims token = JWTUtil.decode(stringToken).getBody();
