@@ -24,16 +24,16 @@ databaseChangeLog:
                   type: varchar(50)
               - column:
                   name: AluCPF
-                  type: varchar(11)
+                  type: varchar(14)
               - column:
                   name: AluBairro
                   type: varchar(50)
               - column:
                   name: AluCel
-                  type: varchar(11)
+                  type: varchar(15)
               - column:
                   name: AluTel
-                  type: varchar(10)
+                  type: varchar(14)
               - column:
                   name: AluPaga
                   type: varchar(30)

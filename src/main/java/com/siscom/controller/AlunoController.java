@@ -36,8 +36,8 @@ public class AlunoController {
 		return alunoService.alterarAluno(aluno);
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE)
-	public String deletar(@PathVariable int id) {
+	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
+	public String deletar(@PathVariable("id") int id) {
 		return alunoService.deletarAluno(id);
 	}
 }

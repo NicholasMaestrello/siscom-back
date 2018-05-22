@@ -64,11 +64,12 @@ public class AlunoServiceImpl implements AlunoService {
 	}
 	
 	@Override
+	@Transactional
 	public String deletarAluno(int id) {
 		if(id <= 0)
 			return "Erro";
 		matriculaService.deletarPorAluno(id);
-		alunoRepository.delete(id);
+		alunoRepository.deleteById(id);
 		return "sucesso";
 	}
 

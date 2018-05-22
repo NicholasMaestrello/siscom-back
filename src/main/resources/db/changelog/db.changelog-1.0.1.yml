@@ -23,20 +23,20 @@ databaseChangeLog:
                   value: Rua Siqueira Bueno, 90
               - column:
                   name: AluCPF
-                  type: varchar(11)
-                  value: 44455522211
+                  type: varchar(14)
+                  value: 444.555.222-11
               - column:
                   name: AluBairro
                   type: varchar(50)
                   value: Mooca
               - column:
                   name: AluCel
-                  type: varchar(10)
-                  value: 55552222
+                  type: varchar(15)
+                  value: (11) 95555-2222
               - column:
                   name: AluTel
-                  type: varchar(11)
-                  value: 966662222
+                  type: varchar(14)
+                  value: (11) 6666-2222
               - column:
                   name: AluDataEnt
                   type: date

@@ -9,4 +9,5 @@ import com.siscom.model.entity.AlunoEntity;
 public interface AlunoRepository extends CrudRepository<AlunoEntity, Integer> {
 
 	List<AlunoEntity> findAll();
+	void deleteById(int id);
 }
