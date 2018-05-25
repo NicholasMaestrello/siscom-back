@@ -2,25 +2,26 @@ package com.siscom.model.dto;
 
 import java.io.Serializable;
 
+import com.siscom.model.type.Status;
+
 public class DefaultResponseDTO <T> implements Serializable {
 
 	private static final long serialVersionUID = -367406365417479502L;
 
-	private String status;
-	private T resposta;
+	private Status status;
+	private T data;
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public T getResposta() {
-		return resposta;
-	}
-	public void setResposta(T resposta) {
-		this.resposta = resposta;
-	}
 	
-	
+	public T getData() {
+		return data;
+	}
+	public void setData(T data) {
+		this.data = data;
+	}	
 }

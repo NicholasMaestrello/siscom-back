@@ -27,17 +27,17 @@ public class AlunoController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public DefaultResponseDTO<AlunoDTO> inserir(@RequestBody AlunoDTO aluno) {
+	public AlunoDTO inserir(@RequestBody AlunoDTO aluno) {
 		return alunoService.inserirAluno(aluno);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public String alterar(@RequestBody AlunoDTO aluno) {
+	public AlunoDTO alterar(@RequestBody AlunoDTO aluno) {
 		return alunoService.alterarAluno(aluno);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
-	public String deletar(@PathVariable("id") int id) {
+	public DefaultResponseDTO<String> deletar(@PathVariable("id") int id) {
 		return alunoService.deletarAluno(id);
 	}
 }

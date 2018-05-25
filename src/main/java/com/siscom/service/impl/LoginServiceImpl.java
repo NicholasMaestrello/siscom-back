@@ -7,6 +7,7 @@ import com.siscom.auth.JWTUtil;
 import com.siscom.model.dto.DefaultResponseDTO;
 import com.siscom.model.dto.LoginDTO;
 import com.siscom.model.entity.LoginEntity;
+import com.siscom.model.type.Status;
 import com.siscom.repository.LoginRepository;
 import com.siscom.service.LoginService;
 
@@ -21,10 +22,10 @@ public class LoginServiceImpl implements LoginService {
 		DefaultResponseDTO<String> resposta = new DefaultResponseDTO<>();
 		LoginEntity l = loginRepository.findByIdAndPassword(login.getId(), login.getPassword());
 		if(l != null) {
-			resposta.setStatus("sucesso");
-			resposta.setResposta(JWTUtil.create(login));
+			resposta.setStatus(Status.OK);
+			resposta.setData(JWTUtil.create(login));
 		}else
-			resposta.setStatus("erro");
+			resposta.setStatus(Status.ERRO);
 		return resposta;
 	}
 

@@ -15,6 +15,7 @@ import com.siscom.model.dto.CursoDTO;
 import com.siscom.model.dto.DefaultResponseDTO;
 import com.siscom.model.dto.MatriculaDTO;
 import com.siscom.model.entity.AlunoEntity;
+import com.siscom.model.type.Status;
 import com.siscom.repository.AlunoRepository;
 import com.siscom.service.AlunoService;
 import com.siscom.service.MatriculaService;
@@ -34,43 +35,43 @@ public class AlunoServiceImpl implements AlunoService {
 	}
 
 	@Override
-	public DefaultResponseDTO<AlunoDTO> inserirAluno(AlunoDTO aluno) {
-		DefaultResponseDTO<AlunoDTO> resposta = new DefaultResponseDTO<>();
-		if (aluno == null) {
-			resposta.setStatus("erro");
-			return resposta;
-		}
+	public AlunoDTO inserirAluno(AlunoDTO aluno){
+//		if (aluno == null) 
+//			throw new InvalidArgumentException("Aluno Vazio");
 		fixDateAluno(aluno);
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
 		if (aluno.getCursos() != null)
 			saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
-		resposta.setStatus("Sucesso");
-		resposta.setResposta(AlunoAdapter.adaptToDTO(a));
-		return resposta;
+		aluno.setId(a.getId());
+		return aluno;
 	}
 
 	@Override
 	@Transactional
-	public String alterarAluno(AlunoDTO aluno) {
-
+	public AlunoDTO alterarAluno(AlunoDTO aluno) {
 		if (aluno == null)
-			return "Erro";
+//			throw new InvalidArgumentException("Aluno Vazio");
 		fixDateAluno(aluno);
 		matriculaService.deletarPorAluno(aluno.getId());
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
 		if (aluno.getCursos() != null)
 			saveMatriuculas(AlunoAdapter.adaptToDTO(a), aluno.getCursos());
-		return "Sucesso";
+		aluno = AlunoAdapter.adaptToDTO(a);
+		return aluno;
 	}
 	
 	@Override
 	@Transactional
-	public String deletarAluno(int id) {
-		if(id <= 0)
-			return "Erro";
+	public DefaultResponseDTO<String> deletarAluno(int id) {
+		DefaultResponseDTO<String> resposta = new DefaultResponseDTO<>();
+		if(id <= 0){
+			resposta.setStatus(Status.ERRO);
+			return resposta;
+		}
 		matriculaService.deletarPorAluno(id);
 		alunoRepository.deleteById(id);
-		return "sucesso";
+		resposta.setStatus(Status.OK);
+		return resposta;
 	}
 
 	private void saveMatriuculas(AlunoDTO aluno, List<CursoDTO> cursos) {

@@ -1,4 +1,4 @@
-package com.siscom.controller;
+package com.siscom.filter;
 
 import java.io.IOException;
 
@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
+
+import com.siscom.auth.JWTUtil;
+
+import io.jsonwebtoken.Claims;
 
 @Component
 public class AutenticationFilter implements Filter {
@@ -50,27 +54,18 @@ public class AutenticationFilter implements Filter {
 
 	// TODO mudar para filtrar de verdad quem sabe usando bean
 	private boolean logado(HttpServletRequest request) {
-//		try {
-//			Enumeration<String> names= request.getHeaderNames();
-//			if(names != null){
-//				while(names.hasMoreElements()){
-//					String nomeHeader = names.nextElement();
-//					System.out.println(nomeHeader);
-//					System.out.println("Header " + request.getHeader(nomeHeader));
-//				}
-//			}
-//			
-//			String stringToken = request.getHeader("access-control-request-headers");
-//			System.out.println(stringToken);
-//			Claims token = JWTUtil.decode(stringToken).getBody();
-//			Object user = token.get("user");
-//			if (user != null)
-//				return true;
-//			return false;
-//		} catch (Exception e) {
-//			return false;
-//		}
-		return true;
+		try {
+			String stringToken = request.getHeader("authorization");
+			System.out.println(stringToken);
+			Claims token = JWTUtil.decode(stringToken).getBody();
+			Object user = token.get("user");
+			if (user != null)
+				return true;
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+//		return true;
 	}
 
 	private void throwUnauthorized(ServletResponse res) throws IOException {

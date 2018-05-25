@@ -8,7 +8,7 @@ import com.siscom.model.dto.DefaultResponseDTO;
 public interface AlunoService {
 
 	List<AlunoDTO> listarAlunos();
-	DefaultResponseDTO<AlunoDTO> inserirAluno(AlunoDTO aluno);
-	String alterarAluno(AlunoDTO aluno);
-	String deletarAluno(int id);
+	AlunoDTO inserirAluno(AlunoDTO aluno);
+	AlunoDTO alterarAluno(AlunoDTO aluno);
+	DefaultResponseDTO<String> deletarAluno(int id);
 }
