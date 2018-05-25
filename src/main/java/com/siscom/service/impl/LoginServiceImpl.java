@@ -25,7 +25,7 @@ public class LoginServiceImpl implements LoginService {
 			resposta.setStatus(Status.OK);
 			resposta.setData(JWTUtil.create(login));
 		}else
-			resposta.setStatus(Status.ERRO);
+			throw new IllegalArgumentException("Usuario ou Senha Invalidos");
 		return resposta;
 	}
 

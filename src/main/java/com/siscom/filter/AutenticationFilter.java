@@ -11,15 +11,21 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.siscom.auth.JWTUtil;
+import com.siscom.model.dto.DefaultResponseDTO;
+import com.siscom.service.AutenticationService;
 
 import io.jsonwebtoken.Claims;
 
 @Component
 public class AutenticationFilter implements Filter {
 	public static final String X_CLACKS_OVERHEAD = "X-Clacks-Overhead";
+	
+	@Autowired
+	private AutenticationService authService;
 
 	@Override
 	public void destroy() {
@@ -56,16 +62,11 @@ public class AutenticationFilter implements Filter {
 	private boolean logado(HttpServletRequest request) {
 		try {
 			String stringToken = request.getHeader("authorization");
-			System.out.println(stringToken);
-			Claims token = JWTUtil.decode(stringToken).getBody();
-			Object user = token.get("user");
-			if (user != null)
-				return true;
-			return false;
+			DefaultResponseDTO<Boolean> resposta = authService.tokenValido(stringToken);
+			return resposta.getData();
 		} catch (Exception e) {
 			return false;
 		}
-//		return true;
 	}
 
 	private void throwUnauthorized(ServletResponse res) throws IOException {

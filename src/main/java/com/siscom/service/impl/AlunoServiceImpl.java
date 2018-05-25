@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.siscom.exception.type.InvalidArgumentException;
 import com.siscom.model.adapter.AlunoAdapter;
 import com.siscom.model.dto.AlunoDTO;
 import com.siscom.model.dto.CursoDTO;
@@ -36,8 +37,8 @@ public class AlunoServiceImpl implements AlunoService {
 
 	@Override
 	public AlunoDTO inserirAluno(AlunoDTO aluno){
-//		if (aluno == null) 
-//			throw new InvalidArgumentException("Aluno Vazio");
+		if (aluno == null) 
+			throw new InvalidArgumentException("Aluno Vazio");
 		fixDateAluno(aluno);
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
 		if (aluno.getCursos() != null)
@@ -50,7 +51,7 @@ public class AlunoServiceImpl implements AlunoService {
 	@Transactional
 	public AlunoDTO alterarAluno(AlunoDTO aluno) {
 		if (aluno == null)
-//			throw new InvalidArgumentException("Aluno Vazio");
+			throw new InvalidArgumentException("Aluno Vazio");
 		fixDateAluno(aluno);
 		matriculaService.deletarPorAluno(aluno.getId());
 		AlunoEntity a = alunoRepository.save(AlunoAdapter.adaptToEntity(aluno));
@@ -64,10 +65,8 @@ public class AlunoServiceImpl implements AlunoService {
 	@Transactional
 	public DefaultResponseDTO<String> deletarAluno(int id) {
 		DefaultResponseDTO<String> resposta = new DefaultResponseDTO<>();
-		if(id <= 0){
-			resposta.setStatus(Status.ERRO);
-			return resposta;
-		}
+		if(id <= 0)
+			throw new InvalidArgumentException("Id do aluno invalido");
 		matriculaService.deletarPorAluno(id);
 		alunoRepository.deleteById(id);
 		resposta.setStatus(Status.OK);

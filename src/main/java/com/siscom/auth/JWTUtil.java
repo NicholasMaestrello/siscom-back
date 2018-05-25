@@ -30,7 +30,6 @@ public class JWTUtil {
 		return Jwts.parser().setSigningKey(key)
 				.parseClaimsJws(token);
 	}
-
 	
 	private static Date setDateExpiration() {
 		Date dtInicial = new Date();
