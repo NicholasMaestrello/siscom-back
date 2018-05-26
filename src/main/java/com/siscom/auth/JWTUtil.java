@@ -33,7 +33,8 @@ public class JWTUtil {
 	
 	private static Date setDateExpiration() {
 		Date dtInicial = new Date();
-		dtInicial.setTime(dtInicial.getTime() + 1800000);
+//		dtInicial.setTime(dtInicial.getTime() + 1800000);
+		dtInicial.setTime(dtInicial.getTime() + 1000 * 60 * 5);
 		return dtInicial;
 	}
 }
