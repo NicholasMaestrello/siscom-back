@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.siscom.model.adapter.MatriculaAdapter;
-import com.siscom.model.dto.AlunoDTO;
 import com.siscom.model.dto.MatriculaDTO;
 import com.siscom.model.entity.MatriculaEntity;
 import com.siscom.repository.MatriculaRepository;
