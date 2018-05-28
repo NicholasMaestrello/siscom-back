@@ -7,4 +7,6 @@ import com.siscom.model.dto.CursoDTO;
 public interface CursoService {
 
 	List<CursoDTO> listarCursos();
+	CursoDTO incluirCurso(CursoDTO curso);
+	CursoDTO alterarCurso(CursoDTO curso);
 }
