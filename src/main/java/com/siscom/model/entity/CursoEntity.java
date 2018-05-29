@@ -1,9 +1,7 @@
 package com.siscom.model.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -39,8 +36,8 @@ public class CursoEntity implements Serializable{
 	@Column(name= "CurNivel")
 	private String nivel;
 	
-	@OneToMany(mappedBy="curso", cascade=CascadeType.ALL, targetEntity= MatriculaEntity.class, fetch = FetchType.EAGER)
-	private List<MatriculaEntity> alunos;
+//	@OneToMany(mappedBy="curso", cascade=CascadeType.ALL, targetEntity= MatriculaEntity.class, fetch = FetchType.EAGER)
+//	private List<MatriculaEntity> alunos;
 
 	public int getId() {
 		return id;
@@ -90,12 +87,12 @@ public class CursoEntity implements Serializable{
 		this.modalidade = modalidade;
 	}
 
-	public List<MatriculaEntity> getAlunos() {
-		return alunos;
-	}
-
-	public void setAlunos(List<MatriculaEntity> alunos) {
-		this.alunos = alunos;
-	}
+//	public List<MatriculaEntity> getAlunos() {
+//		return alunos;
+//	}
+//
+//	public void setAlunos(List<MatriculaEntity> alunos) {
+//		this.alunos = alunos;
+//	}
 	
 }
