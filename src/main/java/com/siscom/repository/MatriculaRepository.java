@@ -15,6 +15,9 @@ public interface MatriculaRepository extends CrudRepository<MatriculaEntity, Int
 	
 	@Modifying
 	void deleteByAlunoId(int id);
+	
+	@Modifying
+	void deleteByCursoId(int id);
 
 	@Modifying
 	void deleteById(int id);

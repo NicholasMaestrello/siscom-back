@@ -9,4 +9,5 @@ public interface MatriculaService {
 	List<MatriculaDTO> listarMatriculas();
 	void inserirMatriculas(List<MatriculaDTO> matriculas);
 	void deletarPorAluno(int id);
+	void deletarPorCurso(int id);
 }

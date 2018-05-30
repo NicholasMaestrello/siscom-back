@@ -1,12 +1,15 @@
 package com.siscom.model.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,9 @@ public class ModalidadeEntity implements Serializable {
 	
 	@Column(name = "ModNome")
 	private String nome;
+	
+	@OneToMany(mappedBy="modalidade", targetEntity= CursoEntity.class, fetch = FetchType.EAGER)
+	private List<CursoEntity> cursos;
 
 	public int getId() {
 		return id;
@@ -37,5 +43,12 @@ public class ModalidadeEntity implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
+	public List<CursoEntity> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<CursoEntity> cursos) {
+		this.cursos = cursos;
+	}
 }

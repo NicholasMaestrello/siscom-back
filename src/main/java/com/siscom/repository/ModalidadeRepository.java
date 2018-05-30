@@ -9,4 +9,5 @@ import com.siscom.model.entity.ModalidadeEntity;
 public interface ModalidadeRepository extends CrudRepository<ModalidadeEntity, Integer> {
 
 	List<ModalidadeEntity> findAll();
+	void deleteById(int id);
 }

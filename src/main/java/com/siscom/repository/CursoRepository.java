@@ -9,4 +9,5 @@ import com.siscom.model.entity.CursoEntity;
 public interface CursoRepository extends CrudRepository<CursoEntity, Integer> {
 
 	List<CursoEntity> findAll();
+	void deleteById(int id);
 }

@@ -9,4 +9,5 @@ public interface CursoService {
 	List<CursoDTO> listarCursos();
 	CursoDTO incluirCurso(CursoDTO curso);
 	CursoDTO alterarCurso(CursoDTO curso);
+	void excluirCurso(int idCurso);
 }

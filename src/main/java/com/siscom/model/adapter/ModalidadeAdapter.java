@@ -14,6 +14,7 @@ public class ModalidadeAdapter {
 		ModalidadeDTO modalidade = new ModalidadeDTO();
 		modalidade.setId(m.getId());
 		modalidade.setNome(m.getNome());
+//		modalidade.setCursos(CursoAdapter.adaptToDTO(m.getCursos()));
 		return modalidade;
 	}
 	

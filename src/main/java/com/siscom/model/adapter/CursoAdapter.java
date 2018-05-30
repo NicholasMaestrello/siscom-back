@@ -16,7 +16,7 @@ public class CursoAdapter {
 		cn.setModalidade(ModalidadeAdapter.adaptToDto(c.getModalidade()));
 		cn.setNivel(c.getNivel());
 		cn.setResponsavel(c.getResponsavel());
-		cn.setQuantidadeAlunos(c.getAlunos().size());
+		cn.setQuantidadeAlunos(c.getAlunos() != null ? c.getAlunos().size() : 0);
 		return cn;
 	}
 	

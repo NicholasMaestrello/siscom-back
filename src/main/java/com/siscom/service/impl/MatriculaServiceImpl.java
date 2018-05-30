@@ -33,5 +33,10 @@ public class MatriculaServiceImpl implements MatriculaService {
 		matriculaRepo.deleteByAlunoId(id);
 	}
 
+	@Override
+	public void deletarPorCurso(int id) {
+		matriculaRepo.deleteByCursoId(id);
+	}
+
 	
 }

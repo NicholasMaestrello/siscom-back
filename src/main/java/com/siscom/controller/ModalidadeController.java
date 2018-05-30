@@ -3,6 +3,7 @@ package com.siscom.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,4 +34,8 @@ public class ModalidadeController {
 		return modalidadeService.alterarModalidade(modalidade);
 	}
 
+	@RequestMapping(method= RequestMethod.DELETE, value="/{id}")
+	public void excluirModalidade(@PathVariable("id") int id) {
+		modalidadeService.excluirModalidade(id);;
+	}
 }

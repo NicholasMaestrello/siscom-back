@@ -14,11 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.siscom.auth.JWTUtil;
 import com.siscom.model.dto.DefaultResponseDTO;
 import com.siscom.service.AutenticationService;
-
-import io.jsonwebtoken.Claims;
 
 @Component
 public class AutenticationFilter implements Filter {

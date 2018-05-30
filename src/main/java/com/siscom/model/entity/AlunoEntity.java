@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -52,7 +51,7 @@ public class AlunoEntity implements Serializable {
 	@Column(name="AluDataVenc")
 	private Date dataVenc;
 	
-	@OneToMany(mappedBy="aluno", cascade=CascadeType.ALL, targetEntity= MatriculaEntity.class, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="aluno", targetEntity= MatriculaEntity.class, fetch = FetchType.EAGER)
 	private List<MatriculaEntity> matriculas;
 
 	public int getId() {
