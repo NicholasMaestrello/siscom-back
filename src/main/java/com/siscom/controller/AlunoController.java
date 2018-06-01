@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siscom.model.dto.AlunoDTO;
-import com.siscom.model.dto.DefaultResponseDTO;
 import com.siscom.service.AlunoService;
 
 @RestController
@@ -37,7 +36,7 @@ public class AlunoController {
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
-	public DefaultResponseDTO<String> deletar(@PathVariable("id") int id) {
-		return alunoService.deletarAluno(id);
+	public void deletar(@PathVariable("id") int id) {
+		alunoService.deletarAluno(id);
 	}
 }

@@ -13,10 +13,8 @@ import com.siscom.exception.type.InvalidArgumentException;
 import com.siscom.model.adapter.AlunoAdapter;
 import com.siscom.model.dto.AlunoDTO;
 import com.siscom.model.dto.CursoDTO;
-import com.siscom.model.dto.DefaultResponseDTO;
 import com.siscom.model.dto.MatriculaDTO;
 import com.siscom.model.entity.AlunoEntity;
-import com.siscom.model.type.Status;
 import com.siscom.repository.AlunoRepository;
 import com.siscom.service.AlunoService;
 import com.siscom.service.MatriculaService;
@@ -63,14 +61,11 @@ public class AlunoServiceImpl implements AlunoService {
 	
 	@Override
 	@Transactional
-	public DefaultResponseDTO<String> deletarAluno(int id) {
-		DefaultResponseDTO<String> resposta = new DefaultResponseDTO<>();
+	public void deletarAluno(int id) {
 		if(id <= 0)
 			throw new InvalidArgumentException("Id do aluno invalido");
 		matriculaService.deletarPorAluno(id);
 		alunoRepository.deleteById(id);
-		resposta.setStatus(Status.OK);
-		return resposta;
 	}
 
 	private void saveMatriuculas(AlunoDTO aluno, List<CursoDTO> cursos) {

@@ -1,7 +1,6 @@
 package com.siscom.model.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class ModalidadeDTO implements Serializable {
 
@@ -9,7 +8,6 @@ public class ModalidadeDTO implements Serializable {
 
 	private int id;
 	private String nome;
-	private List<CursoDTO> cursos;
 
 	public int getId() {
 		return id;
@@ -27,11 +25,4 @@ public class ModalidadeDTO implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<CursoDTO> getCursos() {
-		return cursos;
-	}
-
-	public void setCursos(List<CursoDTO> cursos) {
-		this.cursos = cursos;
-	}
 }

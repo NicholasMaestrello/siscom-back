@@ -24,8 +24,8 @@ public class CursoController {
 		return cursoService.listarCursos();
 	}
 	
-	@RequestMapping(method= RequestMethod.POST)
-	public CursoDTO incluirCurso(@RequestBody CursoDTO curso) {
+	@RequestMapping(method = RequestMethod.POST)
+	public CursoDTO inserir(@RequestBody CursoDTO curso) {
 		return cursoService.incluirCurso(curso);
 	}
 	
