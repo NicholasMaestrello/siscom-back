@@ -11,7 +11,6 @@ import com.siscom.exception.type.InvalidArgumentException;
 import com.siscom.model.adapter.CursoAdapter;
 import com.siscom.model.dto.CursoDTO;
 import com.siscom.model.entity.CursoEntity;
-import com.siscom.model.entity.MatriculaEntity;
 import com.siscom.repository.CursoRepository;
 import com.siscom.service.CursoService;
 import com.siscom.service.MatriculaService;
@@ -60,9 +59,7 @@ public class CursoServiceImpl implements CursoService {
 	}
 	
 	private void excluirMatriculas(CursoEntity c) {
-		for (MatriculaEntity m : c.getAlunos()) {
-			matriculaService.deletarPorCurso(m.getId());
-		}
+		matriculaService.deletarPorCurso(c.getId());
 	}
 
 }
