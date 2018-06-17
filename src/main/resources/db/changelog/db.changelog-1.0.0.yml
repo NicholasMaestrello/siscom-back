@@ -43,6 +43,15 @@ databaseChangeLog:
               - column:
                   name: AluDataVenc
                   type: date
+        - addUniqueConstraint:
+            catalogName: Aluno
+            columnNames: AluCPF
+            constraintName: const_aluno_cpf
+            deferrable: true
+            disabled: true
+            initiallyDeferred: true
+            schemaName: public
+            tableName: Aluno
 
 #tabela Modalidade
   - changeSet:
@@ -62,6 +71,15 @@ databaseChangeLog:
                 - column:
                     name: ModNome
                     type: varchar(30)
+          - addUniqueConstraint:
+              catalogName: Modalidade
+              columnNames: ModNome
+              constraintName: const_modalidade_nome
+              deferrable: true
+              disabled: true
+              initiallyDeferred: true
+              schemaName: public
+              tableName: Modalidade
 
 #tabela Curso
   - changeSet:
@@ -98,6 +116,15 @@ databaseChangeLog:
               constraintName: Fk_Curso_X_Modalidade
               referencedTableName: Modalidade
               referencedColumnNames: ModId
+          - addUniqueConstraint:
+              catalogName: Curso
+              columnNames: ModId, CurNivel
+              constraintName: const_curso_nivelXmodalidade
+              deferrable: true
+              disabled: true
+              initiallyDeferred: true
+              schemaName: public
+              tableName: Curso
               
 #tabela Matricula
   - changeSet:
